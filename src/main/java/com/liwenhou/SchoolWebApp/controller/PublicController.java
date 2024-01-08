@@ -1,6 +1,7 @@
 package com.liwenhou.SchoolWebApp.controller;
 
 import com.liwenhou.SchoolWebApp.model.Person;
+import com.liwenhou.SchoolWebApp.repository.PersonRepository;
 import com.liwenhou.SchoolWebApp.service.PersonService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,8 +30,8 @@ public class PublicController {
         if (errors.hasErrors()) return "register.html";
 
         boolean isSaved = personService.createNewPerson(person);
-
         if (isSaved) return "redirect:/login?register=true";
+
         return "register.html";
     }
 }

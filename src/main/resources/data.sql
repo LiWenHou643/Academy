@@ -21,3 +21,12 @@ INSERT INTO `holidays` (`day`,`reason`,`type`,`created_at`, `created_by`)
 
 INSERT INTO `holidays` (`day`,`reason`,`type`,`created_at`, `created_by`)
   VALUES (' Nov 11 ','Veterans Day','FEDERAL',CURDATE(),'DBA');
+
+INSERT INTO `roles` (`role_name`,`created_at`, `created_by`)
+  VALUES ('ADMIN',CURDATE(),'DBA');
+
+INSERT INTO `roles` (`role_name`,`created_at`, `created_by`)
+  VALUES ('STUDENT',CURDATE(),'DBA');
+
+INSERT INTO `person` (`name`,`email`,`mobile_number`,`pwd`,`role_id`,`created_at`, `created_by`)
+  VALUES ('Admin','admin@webschool.com','3443434343','$2a$12$LzHgdLWrRkA5yE4fvSwzxuoZNEXnTdNIDDN8i3/brxx3xVP4LUxHS', 1 ,CURDATE(),'DBA');

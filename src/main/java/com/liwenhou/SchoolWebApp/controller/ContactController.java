@@ -35,19 +35,13 @@ public class ContactController {
     }
 
     @RequestMapping(value = "/saveMsg", method = POST)
-    public String saveMessage(@Valid @ModelAttribute("contact") Contact contact, Errors errors){
-        if (errors.hasErrors()){
+    public String saveMessage(@Valid @ModelAttribute("contact") Contact contact, Errors errors) {
+        if (errors.hasErrors()) {
             log.error("Contact form validation failed due to: " + errors.toString());
             return "contact.html";
         }
         contactService.saveMessageDetails(contact);
         return "redirect:/contact";
-    }
-    @RequestMapping(value = "/displayMessages", method = GET)
-    public String displayMessage(Model model){
-        List<Contact> contactMsgs = contactService.findMsgsWithOpenStatus();
-        model.addAttribute("contactMsgs",contactMsgs);
-        return "messages.html";
     }
 
     @RequestMapping(value = "/closeMsg", method = GET)
