@@ -1,5 +1,5 @@
-CREATE DATABASE school;
-USE school;
+CREATE DATABASE academy;
+USE academy;
 
 CREATE TABLE IF NOT EXISTS `contact_msg` (
   `contact_id` int AUTO_INCREMENT  PRIMARY KEY,
@@ -9,16 +9,6 @@ CREATE TABLE IF NOT EXISTS `contact_msg` (
   `subject` varchar(100) NOT NULL,
   `message` varchar(500) NOT NULL,
   `status` varchar(10) NOT NULL,
-  `created_at` TIMESTAMP NOT NULL,
-  `created_by` varchar(50) NOT NULL,
-  `updated_at` TIMESTAMP DEFAULT NULL,
-  `updated_by` varchar(50) DEFAULT NULL
-);
-
-CREATE TABLE IF NOT EXISTS `holidays` (
-  `day` varchar(20) NOT NULL,
-  `reason` varchar(100) NOT NULL,
-  `type` varchar(20) NOT NULL,
   `created_at` TIMESTAMP NOT NULL,
   `created_by` varchar(50) NOT NULL,
   `updated_at` TIMESTAMP DEFAULT NULL,
@@ -63,32 +53,33 @@ CREATE TABLE IF NOT EXISTS `person` (
   `updated_by` varchar(50) DEFAULT NULL,
    PRIMARY KEY (`person_id`),
    FOREIGN KEY (role_id) REFERENCES roles(role_id),
-   FOREIGN KEY (address_id) REFERENCES address(address_id)
+   FOREIGN KEY (address_id) REFERENCES address(address_id),
 );
-
-CREATE TABLE IF NOT EXISTS `class` (
-  `class_id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) NOT NULL,
-  `created_at` TIMESTAMP NOT NULL,
-  `created_by` varchar(50) NOT NULL,
-  `updated_at` TIMESTAMP DEFAULT NULL,
-  `updated_by` varchar(50) DEFAULT NULL,
-   PRIMARY KEY (`class_id`)
-);
-
-ALTER TABLE `person`
-ADD COLUMN `class_id` int NULL AFTER `address_id`,
-ADD CONSTRAINT `FK_CLASS_CLASS_ID` FOREIGN KEY (`class_id`) REFERENCES `class`(`class_id`);classclass
 
 CREATE TABLE IF NOT EXISTS `courses` (
   `course_id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   `fees` varchar(10) NOT NULL,
+  `instructor` varchar(50) NOT NULL,
+  `rating` DECIMAL(2,1) DEFAULT 0,
+  `image` varchar(200) NOT NULL,
   `created_at` TIMESTAMP NOT NULL,
   `created_by` varchar(50) NOT NULL,
   `updated_at` TIMESTAMP DEFAULT NULL,
   `updated_by` varchar(50) DEFAULT NULL,
    PRIMARY KEY (`course_id`)
+);
+
+CREATE TABLE IF NOT EXISTS `courses_lesson` (
+  `lesson_id` int NOT NULL,
+  `course_id` int NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `video` varchar(200) NOT NULL,
+  `created_at` TIMESTAMP NOT NULL,
+  `created_by` varchar(50) NOT NULL,
+  `updated_at` TIMESTAMP DEFAULT NULL,
+  `updated_by` varchar(50) DEFAULT NULL,
+   PRIMARY KEY (`lesson_id`,`course_id`)
 );
 
 CREATE TABLE IF NOT EXISTS `person_courses` (

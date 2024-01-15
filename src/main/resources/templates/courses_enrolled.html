@@ -1,9 +1,6 @@
-<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
--->
 <!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 
 <head>
     <!-- Required meta tags -->
@@ -13,7 +10,7 @@ Author URL: http://w3layouts.com
     <!-- Google fonts -->
     <link href="//fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
     <!-- Template CSS Style link -->
-    <link rel="stylesheet" href="assets/css/style-starter.css">
+    <link rel="stylesheet" href="/assets/css/style-starter.css">
 </head>
 
 <body>
@@ -26,50 +23,48 @@ Author URL: http://w3layouts.com
 <section class="inner-banner py-5">
     <div class="w3l-breadcrumb py-lg-5">
         <div class="container pt-4 pb-sm-4">
-            <h4 class="inner-text-title pt-5">Courses</h4>
+            <h4 class="inner-text-title pt-5">Enrolled Courses</h4>
             <ul class="breadcrumbs-custom-path">
                 <li><a th:href="@{/home}">Home</a></li>
-                <li class="active"><i class="fas fa-angle-right"></i>Courses</li>
+                <li class="active"><i class="fas fa-angle-right"></i>Enrolled Courses</li>
             </ul>
         </div>
     </div>
 </section>
 <!-- //inner banner -->
 
-<!-- courses section -->
-<div class="w3l-grids-block-5 py-5">
-    <div class="container py-md-5 py-4">
-        <div class="title-main text-center mx-auto mb-md-5 mb-4" style="max-width:500px;">
-            <p class="text-uppercase">Best Courses</p>
-            <h3 class="title-style">Find The Right Course For You</h3>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-lg-4 col-md-6" th:each="course : ${courses}">
-                <div class="coursecard-single">
-                    <div class="grids5-info position-relative">
-                        <img src="assets/images/c1.jpg" alt="" class="img-fluid" />
-                        <div class="meta-list">
-                            <a th:text="${course.courseId}"></a>
-                        </div>
-                    </div>
-                    <div class="content-main-top">
-                        <h4><a th:text="${course.name}">Educational Programs</a></h4>
-                        <p th:text="${course.createdBy}"></p>
-                        <div class="content-top mb-4 mt-3">
-                            <ul class="list-unstyled d-flex align-items-center justify-content-between">
-                                <li> <i class="fas fa-book-open"></i> 43 Lesson</li>
-                                <li> <i class="fas fa-star"></i> 4.9</li>
-                            </ul>
-                        </div>
-                        <h4 th:text="${course.fees}"></h4>
-                        <button class="btn btn-primary mt-2" href="">Details</button>
-                    </div>
-                </div>
+<div class="site-section">
+
+    <div class="table-responsive-class">
+
+        <div class="row mb-4">
+            <div class="overview-wrap">
+                <h3 class="heading-21921" th:text="${person.name} + ' Enrolled Courses'"></h3>
             </div>
         </div>
+        <table class="table table-striped table-hover">
+            <thead class="table-dark">
+            <tr>
+                <th scope="col">Course ID</th>
+                <th scope="col">Course Name</th>
+                <th scope="col">Fees</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="course: ${courses}">
+                <td th:text="${course.courseId}"></td>
+                <td th:text="${course.name}"></td>
+                <td th:text="${course.fees}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-2 login-center text-start">
+        <a th:href="@{/dashboard}">
+            <button class="btn btn-style btn-style-3 text-left">BACK</button>
+        </a>
     </div>
 </div>
-<!-- //courses section -->
 
 <!-- footer block -->
 <div th:replace="~{footer :: footer}">...</div>
@@ -103,11 +98,11 @@ Author URL: http://w3layouts.com
 <!-- //move top -->
 
 <!-- common jquery plugin -->
-<script src="assets/js/jquery-3.3.1.min.js"></script>
+<script src="/assets/js/jquery-3.3.1.min.js"></script>
 <!-- //common jquery plugin -->
 
 <!-- theme switch js (light and dark)-->
-<script src="assets/js/theme-change.js"></script>
+<script src="/assets/js/theme-change.js"></script>
 <!-- //theme switch js (light and dark)-->
 
 <!-- MENU-JS -->
@@ -150,7 +145,7 @@ Author URL: http://w3layouts.com
 <!-- //disable body scroll which navbar is in active -->
 
 <!-- bootstrap -->
-<script src="assets/js/bootstrap.min.js"></script>
+<script src="/assets/js/bootstrap.min.js"></script>
 <!-- //bootstrap -->
 <!-- //Js scripts -->
 </body>
