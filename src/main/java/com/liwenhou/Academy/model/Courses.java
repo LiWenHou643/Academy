@@ -23,10 +23,18 @@ public class Courses extends BaseEntity{
 
     private String instructor;
 
-    private float rating;
+    private String description;
 
     private String image;
 
-    @ManyToMany(mappedBy = "courses", fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    private float rating;
+
+    @ManyToMany(mappedBy = "courses", fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     private Set<Person> persons = new HashSet<>();
+
+    @ManyToMany(mappedBy = "courses", fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    private Set<Person> personsCart = new HashSet<>();
+
+    @OneToMany(mappedBy = "courses", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, targetEntity = Lessons.class)
+    private Set<Lessons> lessons = new HashSet<>();
 }

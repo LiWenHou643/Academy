@@ -61,8 +61,9 @@ CREATE TABLE IF NOT EXISTS `courses` (
   `name` varchar(100) NOT NULL,
   `fees` varchar(10) NOT NULL,
   `instructor` varchar(50) NOT NULL,
+  `description` varchar(500) DEFAULT NULL,
+  `image` varchar(200) DEFAULT NULL,
   `rating` DECIMAL(2,1) DEFAULT 0,
-  `image` varchar(200) NOT NULL,
   `created_at` TIMESTAMP NOT NULL,
   `created_by` varchar(50) NOT NULL,
   `updated_at` TIMESTAMP DEFAULT NULL,
@@ -70,7 +71,7 @@ CREATE TABLE IF NOT EXISTS `courses` (
    PRIMARY KEY (`course_id`)
 );
 
-CREATE TABLE IF NOT EXISTS `courses_lesson` (
+CREATE TABLE IF NOT EXISTS `lesson` (
   `lesson_id` int NOT NULL,
   `course_id` int NOT NULL,
   `name` varchar(100) NOT NULL,
@@ -79,10 +80,19 @@ CREATE TABLE IF NOT EXISTS `courses_lesson` (
   `created_by` varchar(50) NOT NULL,
   `updated_at` TIMESTAMP DEFAULT NULL,
   `updated_by` varchar(50) DEFAULT NULL,
-   PRIMARY KEY (`lesson_id`,`course_id`)
+   PRIMARY KEY (`lesson_id`,`course_id`),
+   FOREIGN KEY (course_id) REFERENCES courses(course_id),
 );
 
 CREATE TABLE IF NOT EXISTS `person_courses` (
+  `person_id` int NOT NULL,
+  `course_id` int NOT NULL,
+  FOREIGN KEY (person_id) REFERENCES person(person_id),
+  FOREIGN KEY (course_id) REFERENCES courses(course_id),
+   PRIMARY KEY (`person_id`,`course_id`)
+);
+
+CREATE TABLE IF NOT EXISTS `cart` (
   `person_id` int NOT NULL,
   `course_id` int NOT NULL,
   FOREIGN KEY (person_id) REFERENCES person(person_id),

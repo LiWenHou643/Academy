@@ -22,6 +22,9 @@ public class SecurityConfig {
                 .requestMatchers("/displayProfile").authenticated()
                 .requestMatchers("/updateProfile").authenticated()
                 .requestMatchers("/api/**").authenticated()
+                .requestMatchers("/addCourseToCart/**").authenticated()
+                .requestMatchers("/addStudentToCourse/**").authenticated()
+                .requestMatchers("/cart/**").authenticated()
                 .requestMatchers("/displayMessages/**").hasRole("ADMIN")
                 .requestMatchers("/closeMsg/**").hasRole("ADMIN")
                 .requestMatchers("/admin/**").hasRole("ADMIN")
@@ -29,11 +32,10 @@ public class SecurityConfig {
                 .requestMatchers("/", "/home").permitAll()
                 .requestMatchers("/contact").permitAll()
                 .requestMatchers("/saveMsg").permitAll()
-                .requestMatchers("/courses").permitAll()
+                .requestMatchers("/courses/**").permitAll()
                 .requestMatchers("/about").permitAll()
                 .requestMatchers("/login").permitAll()
                 .requestMatchers("/logout").permitAll()
-                .requestMatchers("/holidays/**").permitAll()
                 .requestMatchers("/public/**").permitAll()
                 .requestMatchers("/assets/**").permitAll());
 

@@ -3,7 +3,8 @@ Author: W3layouts
 Author URL: http://w3layouts.com
 -->
 <!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 
 <head>
     <!-- Required meta tags -->
@@ -14,7 +15,7 @@ Author URL: http://w3layouts.com
     <link href="//fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
     <!-- Template CSS Style link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="assets/css/style-starter.css">
+    <link rel="stylesheet" href="/assets/css/style-starter.css">
 </head>
 
 <body>
@@ -39,24 +40,23 @@ Author URL: http://w3layouts.com
 <!-- courses section -->
 <div class="container">
     <div class="container-fluid">
-        <div class="row mb-4">
+        <div class="row mb-4" th:each="course : ${courses}">
             <div class="col">
-                <h1>HTML & CSS Zero To Hero</h1>
-                <h5>Author</h5>
-                <h6>Description: This is the best course you ever seen</h6>
-                <p>Rank, star</p>
-                <p>Duration</p>
+                <h1 th:text="${course.name}"></h1>
+                <h6 th:text="${course.instructor}"></h6>
+                <p th:text="${course.description}"></p>
+                <p><i class="fas fa-star"></i> 4.9</p>
                 <p>Subtitle</p>
-                <div>
-                    <h4 class="course-fee" th:text="${course.fees}">
-                        1000
-                    </h4>
-                    <button class="btn btn-primary">Add to cart</button>
-                    <button class="btn btn-success">Buy Now</button>
+                <div th:switch="${status}">
+                    <h4 class="course-fee" th:text="${course.fees}"></h4>
+                    <a th:case="'available'" th:href="@{/addCourseToCart}" class="btn btn-primary">Add To Cart</a>
+                    <a th:case="'cartAdded'" class="btn btn-primary" th:href="@{/cart}">Go To Cart</a>
+                    <a th:case="'purchased'" class="btn btn-primary" th:href="@{/learn}">Go To Learn</a>
+                    <a th:unless="${status == 'purchased'}" th:href="@{/addStudentToCourse}" class="btn btn-success">Buy Now</a>
                 </div>
             </div>
             <div class="col">
-                <img class="img img-fluid" src="assets/images/c1.jpg" alt="">
+                <img class="img img-fluid" th:src="${course.image}" alt="course-image">
             </div>
         </div>
         <div class="row course-video-list">
@@ -150,11 +150,11 @@ Author URL: http://w3layouts.com
 <!-- //move top -->
 
 <!-- common jquery plugin -->
-<script src="assets/js/jquery-3.3.1.min.js"></script>
+<script src="/assets/js/jquery-3.3.1.min.js"></script>
 <!-- //common jquery plugin -->
 
 <!-- theme switch js (light and dark)-->
-<script src="assets/js/theme-change.js"></script>
+<script src="/assets/js/theme-change.js"></script>
 <!-- //theme switch js (light and dark)-->
 
 <!-- MENU-JS -->
@@ -197,7 +197,7 @@ Author URL: http://w3layouts.com
 <!-- //disable body scroll which navbar is in active -->
 
 <!-- bootstrap -->
-<script src="assets/js/bootstrap.min.js"></script>
+<script src="/assets/js/bootstrap.min.js"></script>
 <!-- //bootstrap -->
 <!-- //Js scripts -->
 </body>

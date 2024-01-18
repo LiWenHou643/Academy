@@ -19341,8 +19341,8 @@ h3.title-style {
   min-height: 100vh;
   position: relative;
   z-index: 1;
-  background: url(../images/banner.jpg) no-repeat center;
 }
+
 
 .w3l-banner:before {
   content: "";
@@ -19395,31 +19395,11 @@ p.banner-sub {
   line-height: 30px;
 }
 
-.sub-banner-image {
-  border-radius: 67% 33% 28% 72% / 59% 51% 49% 41%;
-  text-align: center;
-  max-width: 450px;
-  max-height: 450px;
-  background: var(--gradient-color-banner);
-  margin-top: 80px;
-}
-
-.sub-banner-image img {
-  position: absolute;
-  top: -162px;
-  right: 0px;
-}
-
 .banner-style-1 {
   top: 0;
   left: -20px;
 }
 
-.banner-style-2 {
-  background: var(--secondary-color);
-  padding: 25px 30px;
-  border-radius: 50%;
-}
 
 .banner-style-2 h4 {
   color: #fff;
@@ -19433,7 +19413,7 @@ p.banner-sub {
   margin-left: 0px;
   border-width: 10px;
   border-style: solid;
-  border-color: var(--secondary-color) var(--secondary-color) transparent transparent;
+  border-color: #7a8aff #7a8aff transparent transparent;
 }
 
 @media (max-width: 1440px) {
@@ -19735,7 +19715,6 @@ p.banner-sub {
 .w3l-grids-block-5 .content-main-top h4 a {
   color: var(--heading-color);
   font-size: 22px;
-  margin-bottom: 8px;
   display: block;
   font-weight: 600;
   line-height: 32px;
@@ -19751,17 +19730,21 @@ p.banner-sub {
   -webkit-transition: .3s ease;
   background: var(--bg-color);
   border-radius: var(--border-radius);
+  height: 400px;
 }
 
 .w3l-grids-block-5 .grids5-info {
   overflow: hidden;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
+  height: 60%;
 }
 
 .w3l-grids-block-5 .grids5-info img {
   display: block;
   width: 100%;
+  height: 100%;
+  object-fit: cover;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
   transition: 0.3s ease-in-out;
@@ -19774,7 +19757,7 @@ p.banner-sub {
 }
 
 .w3l-grids-block-5 .content-main-top {
-  padding: 20px;
+  padding: 5px 20px;
   border: none;
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
@@ -19865,12 +19848,10 @@ ul.rating-list li a.review-color {
 }
 
 .w3l-service-1 .content23-grid1 {
-  background: url("../images/bg1.jpg") no-repeat center;
   background-size: cover;
 }
 
 .w3l-service-1 .content23-grid2 {
-  background: url("../images/bg2.jpg") no-repeat center;
   background-size: cover;
 }
 
@@ -20124,7 +20105,6 @@ p.count-text {
 
 /* testimonials block */
 .w3l-index4 {
-  background: url(../images/bg3.jpg) no-repeat;
   background-size: cover;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -20875,7 +20855,6 @@ p.copy-footer-29 a:hover {
 
 /* inner banner */
 .inner-banner {
-  background: url(../images/banner3.jpg) no-repeat center;
   background-size: cover;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -21626,4 +21605,21 @@ th > a {
 th > a:hover {
   color: var(--primary-color);
   text-decoration: underline;
+}
+
+
+/*Responsive*/
+@media only screen and (min-width: 481px) and (max-width: 1024px){
+  .table-responsive-class {
+    width: 80% !important;
+  }
+}
+
+@media only screen and (max-width: 480px){
+  .large{
+    display: none;
+  }
+  .table-responsive-class {
+    width: 100% !important;
+  }
 }

@@ -23,6 +23,7 @@ public class SchoolUsernamePwdAuthenticationProvider implements AuthenticationPr
     private PersonRepository personRepository;
     @Autowired
     private PasswordEncoder passwordEncoder;
+
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException{
         String email = authentication.getName();
@@ -41,6 +42,7 @@ public class SchoolUsernamePwdAuthenticationProvider implements AuthenticationPr
         grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_"+roles.getRoleName()));
         return grantedAuthorities;
     }
+
     @Override
     public boolean supports(Class<?> authentication){
         return authentication.equals(UsernamePasswordAuthenticationToken.class);

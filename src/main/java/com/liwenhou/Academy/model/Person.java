@@ -70,13 +70,15 @@ public class Person extends BaseEntity{
     @JoinColumn(name = "address_id", referencedColumnName = "addressId", nullable = true)
     private Address address;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = true, targetEntity = Classes.class)
-    @JoinColumn(name = "class_id", referencedColumnName = "classId", nullable = true)
-    private Classes classes;
-
     @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST})
     @JoinTable(name = "person_courses",
             joinColumns = {@JoinColumn(name = "person_id", referencedColumnName = "personId")},
             inverseJoinColumns = {@JoinColumn(name = "course_id", referencedColumnName = "courseId")})
     private Set<Courses> courses = new HashSet<>();
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST})
+    @JoinTable(name = "cart",
+            joinColumns = {@JoinColumn(name = "person_id", referencedColumnName = "personId")},
+            inverseJoinColumns = {@JoinColumn(name = "course_id", referencedColumnName = "courseId")})
+    private Set<Courses> coursesCart = new HashSet<>();
 }
