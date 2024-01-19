@@ -6,6 +6,7 @@ import com.liwenhou.Academy.repository.CoursesRepository;
 import com.liwenhou.Academy.repository.PersonRepository;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,12 +32,12 @@ public class CourseController {
     }
 
     @GetMapping(value = "/courses/{courseId}")
-    public String displayCourses(@PathVariable(name = "courseId") int courseId, Model model, HttpSession session){
+    public String displayCourses(@PathVariable(name = "courseId") int courseId, Model model, Authentication authentication, HttpSession session){
         Optional<Courses> courses = coursesRepository.findById(courseId);
         model.addAttribute("courses",courses.get());
         session.setAttribute("course_detail",courses.get());
 
-        Person student = (Person) session.getAttribute("loggedInPerson");
+        Person student = personRepository.findByEmail(authentication.getName());
 
         Set<Courses> coursesAdded = student.getCourses();
         boolean cartAdded = coursesAdded.contains(courses.get());

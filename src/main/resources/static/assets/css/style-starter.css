@@ -11783,7 +11783,7 @@ fieldset:disabled .btn {
   --bg-grey: #f4f4f4;
   --bg-light: #fbfbfb;
   --box-shadow: 0 0.5rem 1rem rgb(12 12 12 / 5%);
-  --banner-layer: rgb(255 255 255 / 90%);
+  --banner-layer: rgb(255 255 255 / 70%);
   --gradient-color: linear-gradient(to left, #11d5ff 0%, #0089cd 100%);
   --gradient-color-banner: linear-gradient(to left, #00c9f5 0%, #00a4f5 100%);
   --layer: rgb(1 121 179 / 75%);
@@ -11987,9 +11987,8 @@ li {
 
 /* font awesome css */
 /*!
- * Font Awesome Free 5.15.2 by @fontawesome - https://fontawesome.com
- * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
- */
+  background-image: url(https://cdn-employer-wp.arc.dev/wp-content/uploads/2022/04/software-development-costs-1128x635.jpg);
+*/
 .fa,
 .fas,
 .far,
@@ -19336,8 +19335,10 @@ h3.title-style {
 
 /* banner section */
 .w3l-banner {
-  background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
+  background-image: url(/assets/images/banner.jpg);
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
   min-height: 100vh;
   position: relative;
   z-index: 1;
@@ -19417,14 +19418,7 @@ p.banner-sub {
 }
 
 @media (max-width: 1440px) {
-  .sub-banner-image {
-    max-width: 400px;
-    max-height: 400px;
-  }
 
-  .sub-banner-image img {
-    width: 94%;
-  }
 }
 
 @media (max-width: 1200px) {
@@ -19457,6 +19451,7 @@ p.banner-sub {
 }
 
 @media (max-width:991px) {
+
   .w3l-banner {
     animation: gradient 30s ease infinite;
   }
@@ -19471,10 +19466,6 @@ p.banner-sub {
     max-height: 320px;
   }
 
-  .sub-banner-image img {
-    top: -130px;
-  }
-
   .banner-style-1 {
     left: -60px;
   }
@@ -19484,9 +19475,33 @@ p.banner-sub {
   .banner-style-1 {
     left: 0px;
   }
+  .admission-btn {
+    margin: auto;
+  }
+
+  .container {
+    width: 100%;
+  }
 }
 
 @media (max-width: 480px) {
+  .banner-content .row>*{
+    padding-right: 0;
+  }
+  .w3l-banner {
+    min-height: 0vh;
+    height: 50%;
+  }
+  .banner-content {
+    text-align: center;
+    height: 80%;
+  }
+  .admission-btn {
+    margin: auto;
+  }
+  .banner-sub{
+    margin-top: 20px;
+  }
   .w3l-banner h3 {
     font-size: 40px;
     line-height: 45px;
@@ -19499,10 +19514,6 @@ p.banner-sub {
 }
 
 @media (max-width: 414px) {
-  .sub-banner-image {
-    margin-top: 7em;
-  }
-
   .banner-style-2 h4 {
     font-size: 16px;
   }
