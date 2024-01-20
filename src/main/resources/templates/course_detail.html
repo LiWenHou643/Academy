@@ -25,26 +25,26 @@ Author URL: http://w3layouts.com
 
 <!-- inner banner -->
 <section class="inner-banner pt-5">
-<div class="w3l-breadcrumb pt-lg-5">
-    <div class="container pt-4 pb-sm-4">
-        <h4 class="inner-text-title pt-5">Courses</h4>
-        <ul class="breadcrumbs-custom-path">
-            <li><a th:href="@{/home}">Home</a></li>
-            <li class="active"><i class="fas fa-angle-right"></i>Courses</li>
-        </ul>
+    <div class="w3l-breadcrumb pt-lg-5">
+        <div class="container pt-4 pb-sm-4">
+            <h4 class="inner-text-title pt-5">Courses</h4>
+            <ul class="breadcrumbs-custom-path">
+                <li><a th:href="@{/home}">Home</a></li>
+                <li class="active"><i class="fas fa-angle-right"></i>Courses</li>
+            </ul>
+        </div>
     </div>
-</div>
 </section>
 <!-- //inner banner -->
 
 <!-- courses section -->
 <div class="container w-100 mb-5">
     <div class="container-fluid">
-        <div class="row mb-4" th:each="course : ${courses}">
-            <div class="col-md-8">
-                <div class="mb-4">
-                    <h3>You will learn</h3>
-                    <ul class="d-flex flex-wrap">
+        <div class="row mb-4 justify-content-between" th:each="course : ${courses}">
+            <div class="col-md-7">
+                <div class="mb-5">
+                    <h3 class="mb-2">You will learn</h3>
+                    <ul class="d-flex flex-wrap mx-auto" style="width: 85%;">
                         <li style="flex-basis: 50%">
                             <i class="fa-solid fa-check me-2"></i>You will learn</li>
                         <li style="flex-basis: 50%">
@@ -63,8 +63,8 @@ Author URL: http://w3layouts.com
                             <i class="fa-solid fa-check me-2"></i>You will learn</li>
                     </ul>
                 </div>
-                <div class="course-list">
-                    <h3 class="mb-4">Course List</h3>
+                <div class="course-list mb-5">
+                    <h3 class="mb-2">Course List</h3>
                     <div class="accordion" id="accordionPanelsStayOpenExample">
                         <div class="accordion-item">
                             <h2 class="accordion-header">
@@ -110,52 +110,52 @@ Author URL: http://w3layouts.com
                         </div>
                     </div>
                 </div>
-                <div class="mb-4">
-                    <h3>You will learn</h3>
-                    <ul class="d-flex flex-wrap">
-                        <li style="flex-basis: 50%">
-                            <i class="fa-solid fa-check me-2"></i>You will learn</li>
-                        <li style="flex-basis: 50%">
-                            <i class="fa-solid fa-check me-2"></i>You will learn</li>
-                        <li style="flex-basis: 50%">
-                            <i class="fa-solid fa-check me-2"></i>You will learn</li>
-                        <li style="flex-basis: 50%">
-                            <i class="fa-solid fa-check me-2"></i>You will learn</li>
-                        <li style="flex-basis: 50%">
-                            <i class="fa-solid fa-check me-2"></i>You will learn</li>
-                        <li style="flex-basis: 50%">
-                            <i class="fa-solid fa-check me-2"></i>You will learn</li>
-                        <li style="flex-basis: 50%">
-                            <i class="fa-solid fa-check me-2"></i>You will learn</li>
-                        <li style="flex-basis: 50%">
-                            <i class="fa-solid fa-check me-2"></i>You will learn</li>
+                <div class="mb-5">
+                    <h3 class="mb-2">Requirement</h3>
+                    <ul class="w-75 d-flex flex-column">
+                        <li>
+                            <i class="fa-solid fa-check me-2"></i>You will learn about build a fullstack website</li>
+                        <li>
+                            <i class="fa-solid fa-check me-2"></i>You will learn about build a fullstack website</li>
+                        <li>
+                            <i class="fa-solid fa-check me-2"></i>You will learn about build a fullstack website</li>
+                        <li>
+                            <i class="fa-solid fa-check me-2"></i>You will learn about build a fullstack website</li>
+                        <li>
+                            <i class="fa-solid fa-check me-2"></i>You will learn about build a fullstack website</li>
+                        <li>
+                            <i class="fa-solid fa-check me-2"></i>You will learn about build a fullstack website</li>
+                        <li>
+                            <i class="fa-solid fa-check me-2"></i>You will learn about build a fullstack website</li>
+
                     </ul>
                 </div>
             </div>
             <div class="col-md-4">
-                <img class="img img-fluid" th:src="${course.image}" alt="course-image">
-                <div class="w-50 mx-auto">
-                    <h1 class="mb-2" th:text="${course.name}"></h1>
-                    <h5 class="mb-2" th:text="${course.instructor}"></h5>
-                    <p class="mb-2" th:text="${course.description}"></p>
-                    <p class="mb-2">Learn everytime, everywhere</p>
-                    <div class="d-flex justify-content-between">
-                        <h4 class="course-fee mb-2" th:text="${course.fees}"></h4>
-                        <p class="mb-2"><i class="fas fa-star"></i> 4.9</p>
-                    </div>
-                    <div th:switch="${status}" class="d-flex justify-content-between">
-                        <a th:case="'available'" th:href="@{/addCourseToCart}" class="btn btn-primary w-50">Add To Cart</a>
-                        <a th:case="'cartAdded'" class="btn btn-primary w-50" th:href="@{/cart}">Go To Cart</a>
-                        <a th:case="'purchased'" class="btn btn-primary w-50" th:href="@{/learn}">Go To Learn</a>
-                        <a th:unless="${status == 'purchased'}" th:href="@{/addStudentToCourse}" class="btn btn-success w-50">Buy Now</a>
+                <div class="p-3 rounded border border-3 border-dark">
+                    <img class="img img-fluid" th:src="${course.image}" alt="course-image">
+                    <div>
+                        <div class="mx-auto">
+                            <h1 class="mb-2" th:text="${course.name}"></h1>
+                            <h5 class="mb-2" th:text="${course.instructor}"></h5>
+                            <p class="mb-2" th:text="${course.description}"></p>
+                            <p class="mb-2">Learn everytime, everywhere</p>
+                            <div class="d-flex justify-content-between">
+                                <h4 class="course-fee mb-2" th:text="${course.fees}"></h4>
+                                <p class="mb-2"><i class="fas fa-star"></i> 4.9</p>
+                            </div>
+                        </div>
+                        <div th:switch="${status}" class="d-flex justify-content-between">
+                            <a th:case="'available'" th:href="@{/addCourseToCart}" class="btn btn-primary w-50 px-2">Add To Cart</a>
+                            <a th:case="'cartAdded'" th:href="@{/cart}" class="btn btn-primary w-50 px-2">Go To Cart</a>
+                            <a th:case="'purchased'" th:href="@{/learn}" class="btn btn-primary w-50 px-2">Go To Learn</a>
+                            <a th:unless="${status == 'purchased'}" th:href="@{/addStudentToCourse}" class="btn btn-success w-50 px2">Buy Now</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-
-
 </div>
 <!-- //courses section -->
 

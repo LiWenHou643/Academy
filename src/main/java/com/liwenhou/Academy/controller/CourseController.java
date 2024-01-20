@@ -39,8 +39,10 @@ public class CourseController {
 
         Person student = personRepository.findByEmail(authentication.getName());
 
-        Set<Courses> coursesAdded = student.getCourses();
+        Set<Courses> coursesAdded = student.getCoursesCart();
         boolean cartAdded = coursesAdded.contains(courses.get());
+        System.out.println(coursesAdded);
+
         Set<Courses> coursesPurchased = student.getCourses();
         boolean purchased = coursesAdded.contains(courses.get());
 
@@ -48,6 +50,7 @@ public class CourseController {
         else if (purchased) model.addAttribute("status", "purchased");
         else model.addAttribute("status", "available");
 
+        session.setAttribute("loggedInPerson",student);
         return "course_detail.html";
     }
 

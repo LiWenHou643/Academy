@@ -19451,7 +19451,9 @@ p.banner-sub {
 }
 
 @media (max-width:991px) {
-
+  .row>*{
+    padding-right: 0;
+  }
   .w3l-banner {
     animation: gradient 30s ease infinite;
   }

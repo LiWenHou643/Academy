@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS `person` (
   `updated_by` varchar(50) DEFAULT NULL,
    PRIMARY KEY (`person_id`),
    FOREIGN KEY (role_id) REFERENCES roles(role_id),
-   FOREIGN KEY (address_id) REFERENCES address(address_id),
+   FOREIGN KEY (address_id) REFERENCES address(address_id)
 );
 
 CREATE TABLE IF NOT EXISTS `courses` (
@@ -71,17 +71,31 @@ CREATE TABLE IF NOT EXISTS `courses` (
    PRIMARY KEY (`course_id`)
 );
 
-CREATE TABLE IF NOT EXISTS `lesson` (
-  `lesson_id` int NOT NULL,
+CREATE TABLE IF NOT EXISTS `chapters` (
+  `chapter_id` int NOT NULL AUTO_INCREMENT,
+  `chapter_no` int NOT NULL,
   `course_id` int NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `created_at` TIMESTAMP NOT NULL,
+  `created_by` varchar(50) NOT NULL,
+  `updated_at` TIMESTAMP DEFAULT NULL,
+  `updated_by` varchar(50) DEFAULT NULL,
+   PRIMARY KEY (`chapter_id`,`course_id`),
+   FOREIGN KEY (course_id) REFERENCES courses(course_id)
+);
+
+CREATE TABLE IF NOT EXISTS `lessons` (
+  `lesson_id` int NOT NULL AUTO_INCREMENT,
+  `lesson_no` int NOT NULL,
+  `chapter_id` int NOT NULL,
   `name` varchar(100) NOT NULL,
   `video` varchar(200) NOT NULL,
   `created_at` TIMESTAMP NOT NULL,
   `created_by` varchar(50) NOT NULL,
   `updated_at` TIMESTAMP DEFAULT NULL,
   `updated_by` varchar(50) DEFAULT NULL,
-   PRIMARY KEY (`lesson_id`,`course_id`),
-   FOREIGN KEY (course_id) REFERENCES courses(course_id),
+   PRIMARY KEY (`lesson_id`,`chapter_id`),
+   FOREIGN KEY (chapter_id) REFERENCES chapters(chapter_id)
 );
 
 CREATE TABLE IF NOT EXISTS `person_courses` (
